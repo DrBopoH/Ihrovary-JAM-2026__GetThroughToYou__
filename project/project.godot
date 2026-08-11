@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "CharacterData",
 "language": "GDScript",
-"path": "res://blueprints/CharacterData.gd"
+"path": "res://source/blueprints/CharacterData.gd"
 }, {
 "base": "Resource",
 "class": "DialogueStep",
 "language": "GDScript",
-"path": "res://blueprints/DialogueStep.gd"
+"path": "res://source/blueprints/DialogueStep.gd"
 }, {
 "base": "Resource",
 "class": "DialogueStyles",
 "language": "GDScript",
-"path": "res://blueprints/DialogueStyles.gd"
+"path": "res://source/blueprints/DialogueStyles.gd"
 } ]
 _global_script_class_icons={
 "CharacterData": "",
@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Get Through To You"
-run/main_scene="res://main.tscn"
+run/main_scene="res://source/bootstrap/main.tscn"
 
 [display]
 
