@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://source/blueprints/CharacterData.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/ksenia_sad.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/ksenia_fright.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/ksenia_angry.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/ksenia_jou.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/ksenia_disgust.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/ksenia_acceptance.png" type="Texture" id=7]
+
+[resource]
+script = ExtResource( 1 )
+character_name = "Ксенія"
+name_color = Color( 0.819608, 0.360784, 0.156863, 1 )
+joy_portrait = ExtResource( 5 )
+anger_portrait = ExtResource( 4 )
+sad_portrait = ExtResource( 2 )
+fright_portrait = ExtResource( 3 )
+disgust_portrait = ExtResource( 6 )
+acceptance_portrait = ExtResource( 7 )

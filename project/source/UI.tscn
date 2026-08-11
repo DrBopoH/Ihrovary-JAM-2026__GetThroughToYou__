@@ -10,19 +10,23 @@ pause_mode = 2
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 49.0
+margin_left = 64.0
 margin_top = -256.0
-margin_right = -48.0
+margin_right = -64.0
+margin_bottom = -16.0
 grow_vertical = 0
 rect_min_size = Vector2( 0, 256 )
 script = ExtResource( 2 )
 default_style = ExtResource( 1 )
+select_textlabel = NodePath("ContentArea/UIStack/TextLabel")
+select_namelabel = NodePath("Background/NameLabel")
+select_portraitrect = NodePath("PortraitRect")
+select_choicescontainer = NodePath("ContentArea/UIStack/ChoicesContainer")
+select_background = NodePath("Background")
 
 [node name="PortraitRect" type="TextureRect" parent="DialoguePanel"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = -130.0
-margin_bottom = -200.0
+margin_left = -160.0
+margin_bottom = 32.0
 grow_vertical = 0
 stretch_mode = 5
 
@@ -32,29 +36,32 @@ anchor_bottom = 1.0
 patch_margin_left = 40
 patch_margin_right = 120
 
+[node name="NameLabel" type="Label" parent="DialoguePanel/Background"]
+margin_left = 180.0
+margin_top = 8.0
+
 [node name="ContentArea" type="Control" parent="DialoguePanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 220.0
-margin_right = -200.0
-margin_bottom = -15.0
+margin_left = 32.0
+margin_top = 70.0
+margin_right = -32.0
+margin_bottom = -16.0
 
 [node name="UIStack" type="VBoxContainer" parent="DialoguePanel/ContentArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 20.0
-
-[node name="NameLabel" type="Label" parent="DialoguePanel/ContentArea/UIStack"]
-margin_right = 1403.0
-margin_bottom = 14.0
+custom_constants/separation = 24
 
 [node name="TextLabel" type="RichTextLabel" parent="DialoguePanel/ContentArea/UIStack"]
-margin_top = 18.0
-margin_right = 1403.0
-margin_bottom = 217.0
+margin_right = 1728.0
+margin_bottom = 146.0
 size_flags_vertical = 3
 
 [node name="ChoicesContainer" type="VBoxContainer" parent="DialoguePanel/ContentArea/UIStack"]
-margin_top = 221.0
-margin_right = 1403.0
-margin_bottom = 221.0
+margin_left = 352.0
+margin_top = 170.0
+margin_right = 1376.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 1024, 0 )
+size_flags_horizontal = 4

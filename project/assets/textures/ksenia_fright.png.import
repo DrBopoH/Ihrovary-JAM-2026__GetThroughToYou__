@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Untitled74_20260811202508.png-a8813c0f32e9c4443e0aa74f51a8ba74.stex"
+path="res://.import/ksenia_fright.png-b6f7304fc9276d2fbb63f93ea73d694e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Untitled74_20260811202508.png"
-dest_files=[ "res://.import/Untitled74_20260811202508.png-a8813c0f32e9c4443e0aa74f51a8ba74.stex" ]
+source_file="res://assets/textures/ksenia_fright.png"
+dest_files=[ "res://.import/ksenia_fright.png-b6f7304fc9276d2fbb63f93ea73d694e.stex" ]
 
 [params]
 
