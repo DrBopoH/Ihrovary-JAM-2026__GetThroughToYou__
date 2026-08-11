@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1emotion.png-3e07230d750ee83cb6c1b8333c5ce19f.stex"
+path="res://.import/ksenia_jou.png-f00c4c48819a82c84fdc82e45521eaab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/1emotion.png"
-dest_files=[ "res://.import/1emotion.png-3e07230d750ee83cb6c1b8333c5ce19f.stex" ]
+source_file="res://assets/textures/ksenia_jou.png"
+dest_files=[ "res://.import/ksenia_jou.png-f00c4c48819a82c84fdc82e45521eaab.stex" ]
 
 [params]
 

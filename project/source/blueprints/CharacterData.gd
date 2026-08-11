@@ -6,7 +6,7 @@ enum Emotion {
 	JOY,
 	ANGER,
 	SAD,
-	SURPRISE,
+	FRIGHT,
 	DISGUST,
 	ACCEPTANCE
 }
@@ -18,7 +18,7 @@ export(Texture) var default_portrait
 export(Texture) var joy_portrait
 export(Texture) var anger_portrait
 export(Texture) var sad_portrait
-export(Texture) var surprise_portrait
+export(Texture) var fright_portrait
 export(Texture) var disgust_portrait
 export(Texture) var acceptance_portrait
 
@@ -30,8 +30,8 @@ func get_portrait(emotion: int) -> Texture:
 			return anger_portrait if anger_portrait else default_portrait
 		Emotion.SAD:
 			return sad_portrait if sad_portrait else default_portrait
-		Emotion.SURPRISE:
-			return surprise_portrait if surprise_portrait else default_portrait
+		Emotion.FRIGHT:
+			return fright_portrait if fright_portrait else default_portrait
 		Emotion.DISGUST:
 			return disgust_portrait if disgust_portrait else default_portrait
 		Emotion.ACCEPTANCE:

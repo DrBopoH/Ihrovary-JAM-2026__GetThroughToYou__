@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Untitled74_20260811202342.png-3e220f0acad893bc6a4bfe2a730d2ee5.stex"
+path="res://.import/max_jou.png-9f25876bffa9c3ed5895e269460e8116.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Untitled74_20260811202342.png"
-dest_files=[ "res://.import/Untitled74_20260811202342.png-3e220f0acad893bc6a4bfe2a730d2ee5.stex" ]
+source_file="res://assets/textures/max_jou.png"
+dest_files=[ "res://.import/max_jou.png-9f25876bffa9c3ed5895e269460e8116.stex" ]
 
 [params]
 
