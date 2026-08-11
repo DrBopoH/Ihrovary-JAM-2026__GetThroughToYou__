@@ -14,7 +14,6 @@ onready var choices_container = $ContentArea/UIStack/ChoicesContainer
 onready var background = $Background
 
 func _ready():
-	pause_mode = Node.PAUSE_MODE_PROCESS
 	hide()
 
 func _input(event):
@@ -47,15 +46,17 @@ func display_step(step: DialogueStep):
 		return
 	
 	current_step = step
+	
 	text_label.text = step.text
 	
-	if step.speaker and step.speaker is CharacterData:
-		var char_data = step.speaker as CharacterData
+	if step.character and step.character is CharacterData:
+		var char_data = step.character as CharacterData
 		name_label.text = char_data.character_name
 		name_label.modulate = char_data.name_color
 		
-		if char_data.default_portrait:
-			portrait_rect.texture = char_data.default_portrait
+		var active_portrait = char_data.get_portrait(step.emotion)
+		if active_portrait:
+			portrait_rect.texture = active_portrait
 			portrait_rect.show()
 		else:
 			portrait_rect.hide()
