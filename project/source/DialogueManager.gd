@@ -7,14 +7,31 @@ export(Resource) var default_style
 
 var current_step: DialogueStep
 
-onready var text_label = $ContentArea/UIStack/TextLabel
-onready var name_label = $ContentArea/UIStack/NameLabel
-onready var portrait_rect = $PortraitRect
-onready var choices_container = $ContentArea/UIStack/ChoicesContainer
-onready var background = $Background
+export(NodePath) var select_textlabel
+export(NodePath) var select_namelabel
+export(NodePath) var select_portraitrect
+export(NodePath) var select_choicescontainer
+export(NodePath) var select_background
+
+var text_label: RichTextLabel
+var name_label: Label
+var portrait_rect: TextureRect
+var choices_container: VBoxContainer
+var background: NinePatchRect
 
 func _ready():
 	hide()
+	
+	if select_textlabel:
+		text_label = get_node(select_textlabel) as RichTextLabel
+	if select_namelabel:
+		name_label = get_node(select_namelabel) as Label
+	if select_portraitrect:
+		portrait_rect = get_node(select_portraitrect) as TextureRect
+	if select_choicescontainer:
+		choices_container = get_node(select_choicescontainer) as VBoxContainer
+	if select_background:
+		background = get_node(select_background) as NinePatchRect
 
 func _input(event):
 	if not visible or current_step == null:
@@ -93,6 +110,8 @@ func create_choice_button(btn_text: String, index: int, style: DialogueStyles):
 	var btn = Button.new()
 	btn.text = btn_text
 	btn.rect_min_size = Vector2(0, 45) 
+	
+	btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	
 	if style:
