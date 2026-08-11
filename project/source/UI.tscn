@@ -25,10 +25,8 @@ select_choicescontainer = NodePath("ContentArea/UIStack/ChoicesContainer")
 select_background = NodePath("Background")
 
 [node name="PortraitRect" type="TextureRect" parent="DialoguePanel"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = -164.0
-margin_bottom = -255.0
+margin_left = -160.0
+margin_bottom = 32.0
 grow_vertical = 0
 stretch_mode = 5
 
@@ -39,7 +37,7 @@ patch_margin_left = 40
 patch_margin_right = 120
 
 [node name="NameLabel" type="Label" parent="DialoguePanel/Background"]
-margin_left = 182.0
+margin_left = 180.0
 margin_top = 8.0
 
 [node name="ContentArea" type="Control" parent="DialoguePanel"]

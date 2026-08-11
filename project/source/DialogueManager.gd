@@ -19,6 +19,12 @@ var portrait_rect: TextureRect
 var choices_container: VBoxContainer
 var background: NinePatchRect
 
+var last_character = null
+var last_emotion = null
+var portrait_tween: Tween
+var base_margin_top: float = 0.0
+var base_margin_bottom: float = 0.0
+
 func _ready():
 	hide()
 	
@@ -28,10 +34,15 @@ func _ready():
 		name_label = get_node(select_namelabel) as Label
 	if select_portraitrect:
 		portrait_rect = get_node(select_portraitrect) as TextureRect
+		base_margin_top = portrait_rect.margin_top
+		base_margin_bottom = portrait_rect.margin_bottom
 	if select_choicescontainer:
 		choices_container = get_node(select_choicescontainer) as VBoxContainer
 	if select_background:
 		background = get_node(select_background) as NinePatchRect
+	
+	portrait_tween = Tween.new()
+	add_child(portrait_tween)
 
 func _input(event):
 	if not visible or current_step == null:
@@ -75,11 +86,21 @@ func display_step(step: DialogueStep):
 		if active_portrait:
 			portrait_rect.texture = active_portrait
 			portrait_rect.show()
+			
+			if last_character != char_data or last_emotion != step.emotion:
+				bounce_portrait()
+				
+			last_character = char_data
+			last_emotion = step.emotion
 		else:
 			portrait_rect.hide()
+			last_character = null
+			last_emotion = null
 	else:
 		name_label.text = ""
 		portrait_rect.hide()
+		last_character = null
+		last_emotion = null
 	
 	var active_style: DialogueStyles = null
 	
@@ -105,6 +126,42 @@ func display_step(step: DialogueStep):
 	if step.choices.size() > 0:
 		for i in range(step.choices.size()):
 			create_choice_button(step.choices[i], i, active_style)
+
+func bounce_portrait():
+	if not portrait_rect or not portrait_tween:
+		return
+	
+	portrait_tween.stop_all()
+	
+	var jump_height = 30.0 
+	var duration_up = 0.1  
+	var duration_down = 0.15 
+	
+	portrait_tween.interpolate_property(
+		portrait_rect, "margin_top",
+		base_margin_top, base_margin_top - jump_height,
+		duration_up, Tween.TRANS_SINE, Tween.EASE_OUT
+	)
+	portrait_tween.interpolate_property(
+		portrait_rect, "margin_bottom",
+		base_margin_bottom, base_margin_bottom - jump_height,
+		duration_up, Tween.TRANS_SINE, Tween.EASE_OUT
+	)
+	
+	portrait_tween.interpolate_property(
+		portrait_rect, "margin_top",
+		base_margin_top - jump_height, base_margin_top,
+		duration_down, Tween.TRANS_BOUNCE, Tween.EASE_OUT,
+		duration_up 
+	)
+	portrait_tween.interpolate_property(
+		portrait_rect, "margin_bottom",
+		base_margin_bottom - jump_height, base_margin_bottom,
+		duration_down, Tween.TRANS_BOUNCE, Tween.EASE_OUT,
+		duration_up 
+	)
+	
+	portrait_tween.start()
 
 func create_choice_button(btn_text: String, index: int, style: DialogueStyles):
 	var btn = Button.new()
@@ -154,5 +211,9 @@ func clear_choices():
 func end_dialogue():
 	hide()
 	current_step = null
+	
+	last_character = null
+	last_emotion = null
+	
 	get_tree().paused = false
 	emit_signal("dialogue_finished")

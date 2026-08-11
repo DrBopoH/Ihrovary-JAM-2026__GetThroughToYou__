@@ -11,7 +11,7 @@
 [resource]
 script = ExtResource( 1 )
 character_name = "Ксенія"
-name_color = Color( 1, 1, 1, 1 )
+name_color = Color( 0.819608, 0.360784, 0.156863, 1 )
 joy_portrait = ExtResource( 5 )
 anger_portrait = ExtResource( 4 )
 sad_portrait = ExtResource( 2 )
