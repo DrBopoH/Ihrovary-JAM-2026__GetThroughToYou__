@@ -1,7 +1,8 @@
 class_name DialogueStep
 extends Resource
 
-export(Resource) var speaker
+export(Resource) var character
+export(CharacterData.Emotion) var emotion = CharacterData.Emotion.DEFAULT
 export(Resource) var style_override
 
 export(String, MULTILINE) var text = ""
