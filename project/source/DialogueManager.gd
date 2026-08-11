@@ -14,7 +14,27 @@ onready var choices_container = $ContentArea/UIStack/ChoicesContainer
 onready var background = $Background
 
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	hide()
+
+func _input(event):
+	if not visible or current_step == null:
+		return
+	
+	if current_step.choices.size() > 0:
+		return
+	
+	var is_space = event.is_action_pressed("ui_accept")
+	var is_click = (event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed)
+	var is_touch = (event is InputEventScreenTouch and event.pressed)
+	
+	if is_space or is_click or is_touch:
+		get_tree().set_input_as_handled() 
+		
+		if current_step.next_steps.size() > 0:
+			display_step(current_step.next_steps[0])
+		else:
+			end_dialogue()
 
 func start_dialogue(start_step: DialogueStep):
 	get_tree().paused = true
@@ -27,13 +47,13 @@ func display_step(step: DialogueStep):
 		return
 	
 	current_step = step
-	
 	text_label.text = step.text
 	
 	if step.speaker and step.speaker is CharacterData:
 		var char_data = step.speaker as CharacterData
 		name_label.text = char_data.character_name
 		name_label.modulate = char_data.name_color
+		
 		if char_data.default_portrait:
 			portrait_rect.texture = char_data.default_portrait
 			portrait_rect.show()
@@ -61,25 +81,43 @@ func display_step(step: DialogueStep):
 	
 	if step.trigger_event != "":
 		emit_signal("game_event_triggered", step.trigger_event)
-		
+	
 	clear_choices()
 	
 	if step.choices.size() > 0:
 		for i in range(step.choices.size()):
-			create_choice_button(step.choices[i], i)
-	else:
-		create_choice_button("Далее...", 0)
+			create_choice_button(step.choices[i], i, active_style)
 
-func create_choice_button(btn_text: String, index: int):
+func create_choice_button(btn_text: String, index: int, style: DialogueStyles):
 	var btn = Button.new()
 	btn.text = btn_text
-	btn.rect_min_size = Vector2(0, 36)
+	btn.rect_min_size = Vector2(0, 45) 
+	btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	
-	if default_style and default_style is DialogueStyles:
-		var style = default_style as DialogueStyles
+	if style:
 		if style.custom_font:
 			btn.add_font_override("font", style.custom_font)
-			
+		
+		if style.button_normal_style:
+			btn.add_stylebox_override("normal", style.button_normal_style)
+		if style.button_hover_style:
+			btn.add_stylebox_override("hover", style.button_hover_style)
+		if style.button_pressed_style:
+			btn.add_stylebox_override("pressed", style.button_pressed_style)
+	
+	if not style or not style.button_normal_style:
+		var normal_style = StyleBoxFlat.new()
+		normal_style.bg_color = Color(0, 0, 0, 0.7) 
+		normal_style.border_width_left = 4          
+		normal_style.border_color = Color(0.8, 0.4, 0.1, 1.0) 
+		
+		var hover_style = normal_style.duplicate()
+		hover_style.bg_color = Color(0.2, 0.2, 0.2, 0.9) 
+		
+		btn.add_stylebox_override("normal", normal_style)
+		btn.add_stylebox_override("hover", hover_style)
+		btn.add_stylebox_override("pressed", hover_style)
+	
 	btn.connect("pressed", self, "_on_choice_made", [index])
 	choices_container.add_child(btn)
 
@@ -95,5 +133,6 @@ func clear_choices():
 
 func end_dialogue():
 	hide()
+	current_step = null
 	get_tree().paused = false
 	emit_signal("dialogue_finished")
