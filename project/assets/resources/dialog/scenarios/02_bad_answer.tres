@@ -10,4 +10,4 @@ emotion = 0
 text = "Эй, не ругайся!"
 choices = [  ]
 next_steps = [  ]
-trigger_event = ""
+trigger_event = null

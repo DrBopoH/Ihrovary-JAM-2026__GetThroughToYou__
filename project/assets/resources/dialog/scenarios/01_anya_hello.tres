@@ -7,7 +7,8 @@
 
 [resource]
 script = ExtResource( 1 )
-speaker = ExtResource( 2 )
+character = ExtResource( 2 )
+emotion = 0
 text = "Привет! Кажется, мы наконец-то настроили этот чертов UI."
 choices = [ "Да, мы крутые!", "Это было душно." ]
 next_steps = [ ExtResource( 3 ), ExtResource( 4 ) ]
