@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
-[ext_resource path="res://blueprints/DialogueStep.gd" type="Script" id=1]
-[ext_resource path="res://assets/characters/anya.tres" type="Resource" id=2]
-[ext_resource path="res://assets/dialog/scenarios/02_good_answer.tres" type="Resource" id=3]
-[ext_resource path="res://assets/dialog/scenarios/02_bad_answer.tres" type="Resource" id=4]
+[ext_resource path="res://source/blueprints/DialogueStep.gd" type="Script" id=1]
+[ext_resource path="res://assets/resources/characters/anya.tres" type="Resource" id=2]
+[ext_resource path="res://assets/resources/dialog/scenarios/02_good_answer.tres" type="Resource" id=3]
+[ext_resource path="res://assets/resources/dialog/scenarios/02_bad_answer.tres" type="Resource" id=4]
 
 [resource]
 script = ExtResource( 1 )
