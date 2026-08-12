@@ -1,11 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/resources/dialog/styles/default_style.tres" type="Resource" id=1]
-[ext_resource path="res://source/DialogueManager.gd" type="Script" id=2]
+[ext_resource path="res://source/bootstrap/UI/dialog/DialogueManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/resources/dialog/styles/default_style.tres" type="Resource" id=2]
 
-[node name="UI" type="CanvasLayer"]
-
-[node name="DialoguePanel" type="Control" parent="."]
+[node name="DialoguePanel" type="Control"]
 pause_mode = 2
 anchor_top = 1.0
 anchor_right = 1.0
@@ -16,31 +14,31 @@ margin_right = -64.0
 margin_bottom = -16.0
 grow_vertical = 0
 rect_min_size = Vector2( 0, 256 )
-script = ExtResource( 2 )
-default_style = ExtResource( 1 )
+script = ExtResource( 1 )
+default_style = ExtResource( 2 )
 select_textlabel = NodePath("ContentArea/UIStack/TextLabel")
 select_namelabel = NodePath("Background/NameLabel")
 select_portraitrect = NodePath("PortraitRect")
 select_choicescontainer = NodePath("ContentArea/UIStack/ChoicesContainer")
 select_background = NodePath("Background")
 
-[node name="PortraitRect" type="TextureRect" parent="DialoguePanel"]
+[node name="PortraitRect" type="TextureRect" parent="."]
 margin_left = -160.0
 margin_bottom = 32.0
 grow_vertical = 0
 stretch_mode = 5
 
-[node name="Background" type="NinePatchRect" parent="DialoguePanel"]
+[node name="Background" type="NinePatchRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 patch_margin_left = 40
 patch_margin_right = 120
 
-[node name="NameLabel" type="Label" parent="DialoguePanel/Background"]
+[node name="NameLabel" type="Label" parent="Background"]
 margin_left = 180.0
 margin_top = 8.0
 
-[node name="ContentArea" type="Control" parent="DialoguePanel"]
+[node name="ContentArea" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 32.0
@@ -48,17 +46,17 @@ margin_top = 70.0
 margin_right = -32.0
 margin_bottom = -16.0
 
-[node name="UIStack" type="VBoxContainer" parent="DialoguePanel/ContentArea"]
+[node name="UIStack" type="VBoxContainer" parent="ContentArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 24
 
-[node name="TextLabel" type="RichTextLabel" parent="DialoguePanel/ContentArea/UIStack"]
+[node name="TextLabel" type="RichTextLabel" parent="ContentArea/UIStack"]
 margin_right = 1728.0
 margin_bottom = 146.0
 size_flags_vertical = 3
 
-[node name="ChoicesContainer" type="VBoxContainer" parent="DialoguePanel/ContentArea/UIStack"]
+[node name="ChoicesContainer" type="VBoxContainer" parent="ContentArea/UIStack"]
 margin_left = 352.0
 margin_top = 170.0
 margin_right = 1376.0

@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://source/bootstrap/UI/menu/Menu.gd" type="Script" id=1]
+[ext_resource path="res://source/bootstrap/UI/dialog/DialoguePanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/resources/dialog/styles/default_style.tres" type="Resource" id=3]
+[ext_resource path="res://assets/resources/dialog/scenarios/00_anna_dialog.tres" type="Resource" id=4]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="DialoguePanel" parent="." instance=ExtResource( 2 )]
+
+[node name="Menu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = ExtResource( 1 )
+menu_style = ExtResource( 3 )
+starting_step = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -300.0
+margin_right = 128.0
+margin_bottom = 111.5
+rect_min_size = Vector2( 256, 0 )
+custom_constants/separation = 16
+
+[node name="Start" type="Button" parent="Menu/VBoxContainer"]
+margin_right = 256.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Почати"
+
+[node name="Settings" type="Button" parent="Menu/VBoxContainer"]
+margin_top = 36.0
+margin_right = 256.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+text = "Налаштування"
+
+[node name="Credits" type="Button" parent="Menu/VBoxContainer"]
+margin_top = 72.0
+margin_right = 256.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+text = "Автори"
+
+[node name="Exit" type="Button" parent="Menu/VBoxContainer"]
+margin_top = 108.0
+margin_right = 256.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+text = "Вийти"

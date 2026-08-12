@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/body.png-0c6c0118913a85536820a9b042163589.stex"
+path="res://.import/ksenia.png-65969b4c19330eaeed01fb9cacb3d420.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/body.png"
-dest_files=[ "res://.import/body.png-0c6c0118913a85536820a9b042163589.stex" ]
+source_file="res://assets/textures/ksenia.png"
+dest_files=[ "res://.import/ksenia.png-65969b4c19330eaeed01fb9cacb3d420.stex" ]
 
 [params]
 
