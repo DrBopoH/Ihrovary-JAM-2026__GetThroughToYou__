@@ -16,6 +16,6 @@ func _unhandled_input(event):
 			menu.btn_start.grab_focus()
 			
 			if dialogue_manager.visible:
-				dialogue_manager.end_dialogue()
+				dialogue_manager.force_reset()
 			
 			get_tree().set_input_as_handled()

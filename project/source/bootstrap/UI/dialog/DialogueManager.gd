@@ -25,6 +25,9 @@ var portrait_tween: Tween
 var base_margin_top: float = 0.0
 var base_margin_bottom: float = 0.0
 
+var text_tween: Tween
+var is_typing: bool = false
+
 func _ready():
 	hide()
 	
@@ -43,12 +46,16 @@ func _ready():
 	
 	portrait_tween = Tween.new()
 	add_child(portrait_tween)
+	
+	text_tween = Tween.new()
+	add_child(text_tween)
+	text_tween.connect("tween_all_completed", self, "_on_text_tween_completed")
 
 func _input(event):
 	if not visible or current_step == null:
 		return
 	
-	if current_step.choices.size() > 0:
+	if not is_typing and current_step.choices.size() > 0:
 		return
 	
 	var is_space = event.is_action_pressed("ui_accept")
@@ -57,6 +64,12 @@ func _input(event):
 	
 	if is_space or is_click or is_touch:
 		get_tree().set_input_as_handled() 
+		
+		if is_typing:
+			text_tween.remove_all()
+			text_label.percent_visible = 1.0
+			_on_text_tween_completed()
+			return
 		
 		if current_step.next_steps.size() > 0:
 			display_step(current_step.next_steps[0])
@@ -75,7 +88,11 @@ func display_step(step: DialogueStep):
 	
 	current_step = step
 	
-	text_label.text = step.text
+	var active_style: DialogueStyles = null
+	if step.style_override and step.style_override is DialogueStyles:
+		active_style = step.style_override as DialogueStyles
+	elif default_style and default_style is DialogueStyles:
+		active_style = default_style as DialogueStyles
 	
 	if step.character and step.character is CharacterData:
 		var char_data = step.character as CharacterData
@@ -102,13 +119,6 @@ func display_step(step: DialogueStep):
 		last_character = null
 		last_emotion = null
 	
-	var active_style: DialogueStyles = null
-	
-	if step.style_override and step.style_override is DialogueStyles:
-		active_style = step.style_override as DialogueStyles
-	elif default_style and default_style is DialogueStyles:
-		active_style = default_style as DialogueStyles
-	
 	if active_style:
 		if active_style.panel_background:
 			background.texture = active_style.panel_background
@@ -117,21 +127,48 @@ func display_step(step: DialogueStep):
 		if active_style.custom_font:
 			name_label.add_font_override("font", active_style.custom_font)
 			text_label.add_font_override("normal_font", active_style.custom_font)
-	
-	if step.trigger_event != "":
-		emit_signal("game_event_triggered", step.trigger_event)
-	
+			
 	clear_choices()
-	
+	choices_container.hide()
 	if step.choices.size() > 0:
 		for i in range(step.choices.size()):
 			create_choice_button(step.choices[i], i, active_style)
+			
+	text_label.text = step.text
+	text_label.percent_visible = 0.0
+	
+	var speed = 30
+	if active_style and active_style.text_speed > 0:
+		speed = active_style.text_speed
+		
+	var duration = float(text_label.text.length()) / float(speed)
+	
+	if duration > 0.0:
+		is_typing = true
+		text_tween.remove_all()
+		text_tween.interpolate_property(
+			text_label, "percent_visible", 
+			0.0, 1.0, duration, 
+			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+		)
+		text_tween.start()
+	else:
+		text_label.percent_visible = 1.0
+		_on_text_tween_completed()
+	
+	if step.trigger_event != "":
+		emit_signal("game_event_triggered", step.trigger_event)
+
+func _on_text_tween_completed():
+	is_typing = false
+	if current_step and current_step.choices.size() > 0:
+		choices_container.show()
 
 func bounce_portrait():
 	if not portrait_rect or not portrait_tween:
 		return
 	
-	portrait_tween.stop_all()
+	portrait_tween.remove_all()
 	
 	var jump_height = 30.0 
 	var duration_up = 0.1  
@@ -211,9 +248,26 @@ func clear_choices():
 func end_dialogue():
 	hide()
 	current_step = null
-	
 	last_character = null
 	last_emotion = null
-	
+	is_typing = false
 	get_tree().paused = false
 	emit_signal("dialogue_finished")
+
+func force_reset():
+	hide()
+	current_step = null
+	last_character = null
+	last_emotion = null
+	is_typing = false
+	clear_choices()
+	
+	if text_tween:
+		text_tween.remove_all()
+	
+	if portrait_rect and portrait_tween:
+		portrait_tween.remove_all()
+		portrait_rect.margin_top = base_margin_top
+		portrait_rect.margin_bottom = base_margin_bottom
+		
+	get_tree().paused = false
