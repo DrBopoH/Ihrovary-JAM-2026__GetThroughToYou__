@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://source/blueprints/CharacterData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+character_name = "Родичі"
+name_color = Color( 0.901961, 0.313726, 0.0235294, 1 )

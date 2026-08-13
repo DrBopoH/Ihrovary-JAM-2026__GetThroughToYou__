@@ -1,6 +1,8 @@
 class_name DialogueStep
 extends Resource
 
+export(Texture) var background_image
+
 export(Resource) var character
 export(CharacterData.Emotion) var emotion = CharacterData.Emotion.DEFAULT
 export(Resource) var style_override
