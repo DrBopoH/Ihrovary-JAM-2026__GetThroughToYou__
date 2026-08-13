@@ -11,4 +11,4 @@ emotion = 2
 text = "Эй, не ругайся!"
 choices = [  ]
 next_steps = [ ExtResource( 3 ) ]
-trigger_event = null
+trigger_event = ""

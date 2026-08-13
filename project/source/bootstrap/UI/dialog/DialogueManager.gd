@@ -12,12 +12,14 @@ export(NodePath) var select_namelabel
 export(NodePath) var select_portraitrect
 export(NodePath) var select_choicescontainer
 export(NodePath) var select_background
+export(NodePath) var select_scene_background
 
 var text_label: RichTextLabel
 var name_label: Label
 var portrait_rect: TextureRect
 var choices_container: VBoxContainer
 var background: NinePatchRect
+var scene_bg: TextureRect
 
 var last_character = null
 var last_emotion = null
@@ -43,6 +45,8 @@ func _ready():
 		choices_container = get_node(select_choicescontainer) as VBoxContainer
 	if select_background:
 		background = get_node(select_background) as NinePatchRect
+	if select_scene_background:
+		scene_bg = get_node(select_scene_background) as TextureRect
 	
 	portrait_tween = Tween.new()
 	add_child(portrait_tween)
@@ -87,6 +91,11 @@ func display_step(step: DialogueStep):
 		return
 	
 	current_step = step
+	
+	if scene_bg and step.get("background_image") != null:
+		if step.background_image:
+			scene_bg.texture = step.background_image
+			scene_bg.show()
 	
 	var active_style: DialogueStyles = null
 	if step.style_override and step.style_override is DialogueStyles:
@@ -247,6 +256,11 @@ func clear_choices():
 
 func end_dialogue():
 	hide()
+	
+	if scene_bg:
+		scene_bg.texture = null
+		scene_bg.hide()
+	
 	current_step = null
 	last_character = null
 	last_emotion = null
@@ -256,6 +270,11 @@ func end_dialogue():
 
 func force_reset():
 	hide()
+	
+	if scene_bg:
+		scene_bg.texture = null
+		scene_bg.hide()
+		
 	current_step = null
 	last_character = null
 	last_emotion = null
