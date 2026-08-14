@@ -24,8 +24,8 @@ anchor_bottom = 1.0
 [node name="PortraitRect" type="TextureRect" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = -78.0
-margin_bottom = -242.0
+margin_left = 96.0
+margin_bottom = -24.0
 grow_vertical = 0
 stretch_mode = 5
 

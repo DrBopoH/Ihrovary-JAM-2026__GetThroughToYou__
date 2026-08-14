@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://source/blueprints/DialogueStep.gd" type="Script" id=1]
+[ext_resource path="res://assets/resources/dialog/scenarios/funeral/01_Ksenia.tres" type="Resource" id=2]
+[ext_resource path="res://assets/resources/characters/ksenia.tres" type="Resource" id=3]
+[ext_resource path="res://assets/textures/phorona.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+background_image = ExtResource( 4 )
+character = ExtResource( 3 )
+emotion = 3
+text = "*Моя історія, мабуть, має початися з того, як я була щасливою. З того, як мене оточували сімейне щастя та любов. Але чи справді це було щастя?*"
+choices = [  ]
+next_steps = [ ExtResource( 2 ) ]
+trigger_event = ""
