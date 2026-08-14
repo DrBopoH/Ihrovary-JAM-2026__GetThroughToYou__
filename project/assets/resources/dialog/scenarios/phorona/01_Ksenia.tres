@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://source/blueprints/DialogueStep.gd" type="Script" id=1]
+[ext_resource path="res://assets/resources/characters/ksenia.tres" type="Resource" id=2]
+[ext_resource path="res://assets/resources/dialog/scenarios/phorona/02_Ksenia.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+character = ExtResource( 2 )
+emotion = 3
+text = "*Моя мама й мій тато загинули в автокатастрофі однієї чудової ночі, пекло почалося з того дня, коли ми дізналися про їх загибель. Але їхня смерть не була звичайною, він точно до цього причетний. І я впевнена, що це був саме він. У моїй голові стільки плутанини, що я не пам’ятаю того дня. Не пам’ятаю, що сталося…*
+"
+choices = [  ]
+next_steps = [ ExtResource( 3 ) ]
+trigger_event = ""
