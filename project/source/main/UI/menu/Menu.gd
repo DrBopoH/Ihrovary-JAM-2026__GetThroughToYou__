@@ -1,5 +1,7 @@
 extends Control
 
+signal start_game
+
 export(Resource) var menu_style
 export(Resource) var starting_step
 
@@ -51,6 +53,7 @@ func apply_button_style(btn: Button):
 
 func _on_Start_pressed():
 	hide()
+	emit_signal("start_game")
 
 func _on_Settings_pressed():
 	print("Открываем меню настроек...")
