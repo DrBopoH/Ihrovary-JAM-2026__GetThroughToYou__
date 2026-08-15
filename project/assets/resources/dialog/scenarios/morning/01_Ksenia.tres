@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://assets/resources/dialog/styles/default_style.tres" type="Resource" id=1]
+[ext_resource path="res://source/blueprints/DialogueStep.gd" type="Script" id=2]
+[ext_resource path="res://assets/resources/characters/ksenia.tres" type="Resource" id=3]
+[ext_resource path="res://assets/resources/dialog/scenarios/morning/02_Max.tres" type="Resource" id=4]
+[ext_resource path="res://assets/textures/morning.png" type="Texture" id=5]
+
+[resource]
+script = ExtResource( 2 )
+background_image = ExtResource( 5 )
+character = ExtResource( 3 )
+emotion = 7
+style_override = ExtResource( 1 )
+text = "Ранок починається з похмурого й дуже холодного ранку, та світлом, яке б'є в очі, за вікном знову чути гул голубів, які час від часу заглядають у вікно; кожен день — як учора, як позавчора. Я точно ще жива…
+
+"
+choices = [  ]
+next_steps = [ ExtResource( 4 ) ]
+trigger_event = ""

@@ -8,7 +8,7 @@
 script = ExtResource( 1 )
 character = ExtResource( 2 )
 emotion = 0
-text = "ТИХО… Мовчки.Хто я? 
+text = "ТИХО… Мовчи.Хто я? 
 
 "
 choices = [  ]

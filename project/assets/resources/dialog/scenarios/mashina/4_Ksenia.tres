@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/resources/dialog/styles/angry_style.tres" type="Resource" id=1]
+[ext_resource path="res://source/blueprints/DialogueStep.gd" type="Script" id=2]
+[ext_resource path="res://assets/resources/characters/ksenia.tres" type="Resource" id=3]
+[ext_resource path="res://assets/resources/dialog/scenarios/mashina/5_Ksenia.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 2 )
+character = ExtResource( 3 )
+emotion = 5
+style_override = ExtResource( 1 )
+text = ""
+choices = [ "Промовчи!!!" ]
+next_steps = [ ExtResource( 4 ) ]
+trigger_event = ""

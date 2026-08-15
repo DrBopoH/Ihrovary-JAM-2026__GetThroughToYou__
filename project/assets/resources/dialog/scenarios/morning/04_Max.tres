@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/resources/dialog/styles/default_style.tres" type="Resource" id=1]
+[ext_resource path="res://source/blueprints/DialogueStep.gd" type="Script" id=2]
+[ext_resource path="res://assets/resources/dialog/scenarios/morning/05_Ksenia.tres" type="Resource" id=3]
+[ext_resource path="res://assets/resources/characters/maxon.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 2 )
+character = ExtResource( 4 )
+emotion = 1
+style_override = ExtResource( 1 )
+text = "Бо я завжди буду поруч. Моя кохана молодша сестричка.
+"
+choices = [  ]
+next_steps = [ ExtResource( 3 ) ]
+trigger_event = ""
