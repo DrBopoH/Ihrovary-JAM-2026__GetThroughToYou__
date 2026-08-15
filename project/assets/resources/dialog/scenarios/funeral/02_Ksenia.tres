@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 character = ExtResource( 2 )
-emotion = 2
+emotion = 3
 text = "*Я стою й слухаю їхні дурні плітки, при цьому в мене знову починається напад — я навіть не помітила, коли він почався, але голова знову гуде.*
 "
 choices = [  ]

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-character_name = "Невідомий"
+character_name = "Невідомий голос"
 name_color = Color( 1, 0, 0, 1 )
