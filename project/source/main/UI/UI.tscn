@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://source/bootstrap/UI/menu/Menu.gd" type="Script" id=1]
-[ext_resource path="res://source/bootstrap/UI/dialog/DialoguePanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://source/main/UI/menu/Menu.gd" type="Script" id=1]
+[ext_resource path="res://source/main/UI/dialog/DialoguePanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/resources/dialog/styles/default_style.tres" type="Resource" id=3]
 [ext_resource path="res://assets/resources/dialog/scenarios/funeral/00_Ksenia.tres" type="Resource" id=4]
 

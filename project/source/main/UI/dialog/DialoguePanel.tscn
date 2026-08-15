@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://source/bootstrap/UI/dialog/DialogueManager.gd" type="Script" id=1]
+[ext_resource path="res://source/main/UI/dialog/DialogueManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/resources/dialog/styles/default_style.tres" type="Resource" id=2]
 
 [node name="DialoguePanel" type="Control"]
